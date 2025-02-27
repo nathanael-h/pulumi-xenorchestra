@@ -3,7 +3,7 @@
 PACK := xenorchestra
 ORG := vatesfr
 PROJECT := github.com/$(ORG)/pulumi-$(PACK)
-PROVIDER_PATH := provider
+PROVIDER_PATH := provider/v2
 VERSION_PATH := $(PROVIDER_PATH)/pkg/version.Version
 CODEGEN := pulumi-tfgen-$(PACK)
 PROVIDER := pulumi-resource-$(PACK)
@@ -126,7 +126,7 @@ build_java: .make/build_java
 .make/generate_java: export PATH := $(WORKING_DIR)/.pulumi/bin:$(PATH)
 .make/generate_java: PACKAGE_VERSION := $(PROVIDER_VERSION)
 .make/generate_java: .make/install_plugins bin/pulumi-java-gen .make/schema
-	PULUMI_HOME=$(GEN_PULUMI_HOME) PULUMI_CONVERT_EXAMPLES_CACHE_DIR=$(GEN_PULUMI_CONVERT_EXAMPLES_CACHE_DIR) bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus
+	PULUMI_HOME=$(GEN_PULUMI_HOME) PULUMI_CONVERT_EXAMPLES_CACHE_DIR=$(GEN_PULUMI_CONVERT_EXAMPLES_CACHE_DIR) bin/$(JAVA_GEN) generate --schema $(PROVIDER_PATH)/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus
 	printf "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17\n" > sdk/java/go.mod
 	@touch $@
 .make/build_java: PACKAGE_VERSION := $(PROVIDER_VERSION)
@@ -241,12 +241,12 @@ tfgen_no_deps: .make/schema
 .make/schema: export PULUMI_DISABLE_AUTOMATIC_PLUGIN_ACQUISITION := $(PULUMI_CONVERT)
 .make/schema: export PULUMI_MISSING_DOCS_ERROR := $(PULUMI_MISSING_DOCS_ERROR)
 .make/schema: bin/$(CODEGEN) .make/install_plugins .make/upstream
-	$(WORKING_DIR)/bin/$(CODEGEN) schema --out provider/cmd/$(PROVIDER)
-	(cd provider && VERSION=$(PROVIDER_VERSION) go generate cmd/$(PROVIDER)/main.go)
+	$(WORKING_DIR)/bin/$(CODEGEN) schema --out $(PROVIDER_PATH)/cmd/$(PROVIDER)
+	(cd $(PROVIDER_PATH) && VERSION=$(PROVIDER_VERSION) go generate cmd/$(PROVIDER)/main.go)
 	@touch $@
 tfgen_build_only: bin/$(CODEGEN)
 bin/$(CODEGEN): provider/*.go provider/go.* .make/upstream
-	(cd provider && go build $(PULUMI_PROVIDER_BUILD_PARALLELISM) -o $(WORKING_DIR)/bin/$(CODEGEN) -ldflags "$(LDFLAGS_PROJ_VERSION) $(LDFLAGS_EXTRAS)" $(PROJECT)/$(PROVIDER_PATH)/cmd/$(CODEGEN))
+	(cd $(PROVIDER_PATH) && go build $(PULUMI_PROVIDER_BUILD_PARALLELISM) -o $(WORKING_DIR)/bin/$(CODEGEN) -ldflags "$(LDFLAGS_PROJ_VERSION) $(LDFLAGS_EXTRAS)" $(PROJECT)/$(PROVIDER_PATH)/cmd/$(CODEGEN))
 .PHONY: tfgen schema tfgen_no_deps tfgen_build_only
 
 # Apply patches to the upstream submodule, if it exists
@@ -275,7 +275,7 @@ ci-mgmt: .ci-mgmt.yaml
 
 # Start debug server for tfgen
 debug_tfgen:
-	dlv  --listen=:2345 --headless=true --api-version=2  exec $(WORKING_DIR)/bin/$(CODEGEN) -- schema --out provider/cmd/$(PROVIDER)
+	dlv  --listen=:2345 --headless=true --api-version=2  exec $(WORKING_DIR)/bin/$(CODEGEN) -- schema --out $(PROVIDER_PATH)/cmd/$(PROVIDER)
 .PHONY: debug_tfgen
 
 include scripts/plugins.mk

@@ -15,18 +15,13 @@
 package main
 
 import (
-	_ "embed"
-
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 
 	xenorchestra "github.com/vatesfr/pulumi-xenorchestra/provider"
-	"github.com/vatesfr/pulumi-xenorchestra/provider/pkg/version"
+	"github.com/vatesfr/pulumi-xenorchestra/provider/v2/pkg/version"
 )
-
-//go:embed schema.json
-var pulumiSchema []byte
 
 func main() {
 	// Modify the path to point to the new provider
-	tfbridge.Main("xenorchestra", version.Version, xenorchestra.Provider(), pulumiSchema)
+	tfgen.Main("xenorchestra", version.Version, xenorchestra.Provider())
 }

@@ -27,7 +27,7 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 
-	"github.com/vatesfr/pulumi-xenorchestra/provider/pkg/version"
+	"github.com/vatesfr/pulumi-xenorchestra/provider/v2/pkg/version"
 )
 
 // all of the token components used below.
@@ -44,7 +44,7 @@ const (
 // 	return nil
 // }
 
-//go:embed cmd/pulumi-resource-xenorchestra/bridge-metadata.json
+//go:embed v2/cmd/pulumi-resource-xenorchestra/bridge-metadata.json
 var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider.
