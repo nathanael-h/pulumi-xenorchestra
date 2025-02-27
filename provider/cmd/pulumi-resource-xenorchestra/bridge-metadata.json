@@ -3,7 +3,7 @@
         "resources": {
             "xenorchestra_acl": {
                 "current": "xenorchestra:index/acl:Acl",
-                "majorVersion": 1
+                "majorVersion": 2
             },
             "xenorchestra_bonded_network": {
                 "current": "xenorchestra:index/xoaBondedNetwork:XoaBondedNetwork",
@@ -14,7 +14,7 @@
                         "majorVersion": 0
                     }
                 ],
-                "majorVersion": 1,
+                "majorVersion": 2,
                 "fields": {
                     "pif_ids": {
                         "maxItemsOne": false
@@ -23,7 +23,7 @@
             },
             "xenorchestra_cloud_config": {
                 "current": "xenorchestra:index/cloudConfig:CloudConfig",
-                "majorVersion": 1
+                "majorVersion": 2
             },
             "xenorchestra_network": {
                 "current": "xenorchestra:index/xoaNetwork:XoaNetwork",
@@ -34,11 +34,11 @@
                         "majorVersion": 0
                     }
                 ],
-                "majorVersion": 1
+                "majorVersion": 2
             },
             "xenorchestra_resource_set": {
                 "current": "xenorchestra:index/resourceSet:ResourceSet",
-                "majorVersion": 1,
+                "majorVersion": 2,
                 "fields": {
                     "limit": {
                         "maxItemsOne": false
@@ -53,11 +53,11 @@
             },
             "xenorchestra_vdi": {
                 "current": "xenorchestra:index/vdi:Vdi",
-                "majorVersion": 1
+                "majorVersion": 2
             },
             "xenorchestra_vm": {
                 "current": "xenorchestra:index/vm:Vm",
-                "majorVersion": 1,
+                "majorVersion": 2,
                 "fields": {
                     "blocked_operations": {
                         "maxItemsOne": false
@@ -103,7 +103,7 @@
                         "majorVersion": 0
                     }
                 ],
-                "majorVersion": 1
+                "majorVersion": 2
             },
             "xenorchestra_host": {
                 "current": "xenorchestra:index/getXoaHost:getXoaHost",
@@ -114,7 +114,7 @@
                         "majorVersion": 0
                     }
                 ],
-                "majorVersion": 1,
+                "majorVersion": 2,
                 "fields": {
                     "tags": {
                         "maxItemsOne": false
@@ -130,7 +130,7 @@
                         "majorVersion": 0
                     }
                 ],
-                "majorVersion": 1,
+                "majorVersion": 2,
                 "fields": {
                     "hosts": {
                         "maxItemsOne": false,
@@ -156,7 +156,7 @@
                         "majorVersion": 0
                     }
                 ],
-                "majorVersion": 1
+                "majorVersion": 2
             },
             "xenorchestra_pif": {
                 "current": "xenorchestra:index/getXoaPif:getXoaPif",
@@ -167,7 +167,7 @@
                         "majorVersion": 0
                     }
                 ],
-                "majorVersion": 1
+                "majorVersion": 2
             },
             "xenorchestra_pool": {
                 "current": "xenorchestra:index/getXoaPool:getXoaPool",
@@ -178,7 +178,7 @@
                         "majorVersion": 0
                     }
                 ],
-                "majorVersion": 1
+                "majorVersion": 2
             },
             "xenorchestra_resource_set": {
                 "current": "xenorchestra:index/getXoaResourceSet:getXoaResourceSet",
@@ -189,7 +189,7 @@
                         "majorVersion": 0
                     }
                 ],
-                "majorVersion": 1
+                "majorVersion": 2
             },
             "xenorchestra_sr": {
                 "current": "xenorchestra:index/getXoaStorageRepository:getXoaStorageRepository",
@@ -200,7 +200,7 @@
                         "majorVersion": 0
                     }
                 ],
-                "majorVersion": 1,
+                "majorVersion": 2,
                 "fields": {
                     "tags": {
                         "maxItemsOne": false
@@ -216,7 +216,7 @@
                         "majorVersion": 0
                     }
                 ],
-                "majorVersion": 1
+                "majorVersion": 2
             },
             "xenorchestra_user": {
                 "current": "xenorchestra:index/getXoaUser:getXoaUser",
@@ -227,7 +227,7 @@
                         "majorVersion": 0
                     }
                 ],
-                "majorVersion": 1
+                "majorVersion": 2
             },
             "xenorchestra_vdi": {
                 "current": "xenorchestra:index/getXoaVdi:getXoaVdi",
@@ -238,7 +238,7 @@
                         "majorVersion": 0
                     }
                 ],
-                "majorVersion": 1,
+                "majorVersion": 2,
                 "fields": {
                     "tags": {
                         "maxItemsOne": false
@@ -254,7 +254,7 @@
                         "majorVersion": 0
                     }
                 ],
-                "majorVersion": 1,
+                "majorVersion": 2,
                 "fields": {
                     "vms": {
                         "maxItemsOne": false,
